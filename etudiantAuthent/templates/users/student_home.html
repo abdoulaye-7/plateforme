@@ -1,0 +1,27 @@
+{% extends "base2.html" %}
+{% block content %}
+<body>
+    <div class="container my-5 ">
+        <h1 class="text-center">Student Homepage</h1>
+        <a href="{% url 'create_comment' %}"><button>Create commentaire</button></a>
+        <ul>
+            {% for coms in comments %}
+                <li>{{ coms.comment|truncatewords:20 }} - <a href="{% url 'student-lesson-detail' coms.id %}">regarder le commentaire</a></li>
+            {% endfor %}
+            </ul>
+
+{% comment %} ***********************list for questions********************** {% endcomment %}
+           <a href="{% url 'create_answer' %}"><button>Create answer</button></a>
+        <ul>
+            {% for answer in answers %}
+                <li>{{ answer.answer|truncatewords:20 }} - <a href="{% url 'student-question-detail' answer.id %}">regarder la reponse</a></li>
+            {% endfor %}
+            </ul>
+    </div>
+</body>
+
+
+{% endblock content %}
+
+
+
